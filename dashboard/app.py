@@ -564,10 +564,10 @@ with header_right:
     aeris_markdown(
         """
         <div class="nav">
-            <span class="nav-active">Narrative</span>
-            <span>Visualizer</span>
-            <span>Taxonomy Engine</span>
-            <span>CPI Impact</span>
+            <a href="/?page=visualizer" target="_self" class="nav-link nav-active">Narrative</a>
+            <a href="/Visualizer" target="_self" class="nav-link">Visualizer</a>
+            <a href="/Taxonomy_Engine" target="_self" class="nav-link">Taxonomy Engine</a>
+            <a href="/CPI_Impact" target="_self" class="nav-link">CPI Impact</a>
         </div>
         """,
         unsafe_allow_html=True,
