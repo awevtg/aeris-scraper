@@ -1,0 +1,100 @@
+[
+  {
+    "date": "2026-08-25",
+    "index": 110.498,
+    "previous_index": 102.5533,
+    "index_change_pct": 7.75,
+    "severity": "MEDIUM",
+    "top_affected_routes": [
+      {
+        "origin": "BLR",
+        "destination": "HYD",
+        "booking_window": 45,
+        "previous_fare": 6926.63,
+        "current_fare": 7731.64,
+        "change_pct": 11.62
+      },
+      {
+        "origin": "BOM",
+        "destination": "BLR",
+        "booking_window": 7,
+        "previous_fare": 5580.83,
+        "current_fare": 6222.28,
+        "change_pct": 11.49
+      },
+      {
+        "origin": "BLR",
+        "destination": "HYD",
+        "booking_window": 7,
+        "previous_fare": 5933.07,
+        "current_fare": 6591.3,
+        "change_pct": 11.09
+      },
+      {
+        "origin": "DEL",
+        "destination": "BLR",
+        "booking_window": 45,
+        "previous_fare": 5414.63,
+        "current_fare": 6007.58,
+        "change_pct": 10.95
+      },
+      {
+        "origin": "DEL",
+        "destination": "BOM",
+        "booking_window": 15,
+        "previous_fare": 4485.99,
+        "current_fare": 4946.51,
+        "change_pct": 10.27
+      }
+    ]
+  },
+  {
+    "date": "2026-09-07",
+    "index": 117.6746,
+    "previous_index": 105.1116,
+    "index_change_pct": 11.95,
+    "severity": "HIGH",
+    "top_affected_routes": [
+      {
+        "origin": "DEL",
+        "destination": "CCU",
+        "booking_window": 45,
+        "previous_fare": 6401.67,
+        "current_fare": 7442.83,
+        "change_pct": 16.26
+      },
+      {
+        "origin": "BOM",
+        "destination": "BLR",
+        "booking_window": 45,
+        "previous_fare": 6720.65,
+        "current_fare": 7813.73,
+        "change_pct": 16.26
+      },
+      {
+        "origin": "MAA",
+        "destination": "DEL",
+        "booking_window": 45,
+        "previous_fare": 7538.21,
+        "current_fare": 8702.52,
+        "change_pct": 15.45
+      },
+      {
+        "origin": "DEL",
+        "destination": "BLR",
+        "booking_window": 45,
+        "previous_fare": 5584.71,
+        "current_fare": 6441.7,
+        "change_pct": 15.35
+      },
+      {
+        "origin": "DEL",
+        "destination": "HYD",
+        "booking_window": 45,
+        "previous_fare": 5998.63,
+        "current_fare": 6908.13,
+        "change_pct": 15.16
+      }
+    ]
+  }
+]

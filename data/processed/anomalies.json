@@ -1,0 +1,239 @@
+[
+  {
+    "date": "2026-08-15",
+    "index": 100.0,
+    "route_window_groups": 35,
+    "z_score": null,
+    "anomaly": false
+  },
+  {
+    "date": "2026-08-16",
+    "index": 100.2168,
+    "route_window_groups": 35,
+    "z_score": null,
+    "anomaly": false
+  },
+  {
+    "date": "2026-08-17",
+    "index": 100.6912,
+    "route_window_groups": 35,
+    "z_score": null,
+    "anomaly": false
+  },
+  {
+    "date": "2026-08-18",
+    "index": 100.9166,
+    "route_window_groups": 35,
+    "baseline": 100.3027,
+    "z_score": 1.7367,
+    "anomaly": false
+  },
+  {
+    "date": "2026-08-19",
+    "index": 100.8654,
+    "route_window_groups": 35,
+    "baseline": 100.4562,
+    "z_score": 0.9713,
+    "anomaly": false
+  },
+  {
+    "date": "2026-08-20",
+    "index": 101.2596,
+    "route_window_groups": 35,
+    "baseline": 100.538,
+    "z_score": 1.7676,
+    "anomaly": false
+  },
+  {
+    "date": "2026-08-21",
+    "index": 101.6072,
+    "route_window_groups": 35,
+    "baseline": 100.6583,
+    "z_score": 2.0226,
+    "anomaly": true
+  },
+  {
+    "date": "2026-08-22",
+    "index": 101.7222,
+    "route_window_groups": 35,
+    "baseline": 100.7938,
+    "z_score": 1.6619,
+    "anomaly": false
+  },
+  {
+    "date": "2026-08-23",
+    "index": 101.8312,
+    "route_window_groups": 35,
+    "baseline": 101.0399,
+    "z_score": 1.4953,
+    "anomaly": false
+  },
+  {
+    "date": "2026-08-24",
+    "index": 102.5533,
+    "route_window_groups": 35,
+    "baseline": 101.2705,
+    "z_score": 2.8028,
+    "anomaly": true
+  },
+  {
+    "date": "2026-08-25",
+    "index": 110.498,
+    "route_window_groups": 35,
+    "baseline": 101.5365,
+    "z_score": 15.2514,
+    "anomaly": true
+  },
+  {
+    "date": "2026-08-26",
+    "index": 110.381,
+    "route_window_groups": 35,
+    "baseline": 102.9053,
+    "z_score": 2.2064,
+    "anomaly": true
+  },
+  {
+    "date": "2026-08-27",
+    "index": 111.2108,
+    "route_window_groups": 35,
+    "baseline": 104.2646,
+    "z_score": 1.6397,
+    "anomaly": false
+  },
+  {
+    "date": "2026-08-28",
+    "index": 102.8578,
+    "route_window_groups": 35,
+    "baseline": 105.6862,
+    "z_score": -0.6013,
+    "anomaly": false
+  },
+  {
+    "date": "2026-08-29",
+    "index": 102.4226,
+    "route_window_groups": 35,
+    "baseline": 105.8649,
+    "z_score": -0.7576,
+    "anomaly": false
+  },
+  {
+    "date": "2026-08-30",
+    "index": 103.273,
+    "route_window_groups": 35,
+    "baseline": 105.965,
+    "z_score": -0.6057,
+    "anomaly": false
+  },
+  {
+    "date": "2026-08-31",
+    "index": 103.7088,
+    "route_window_groups": 35,
+    "baseline": 106.1709,
+    "z_score": -0.5794,
+    "anomaly": false
+  },
+  {
+    "date": "2026-09-01",
+    "index": 103.4613,
+    "route_window_groups": 35,
+    "baseline": 106.336,
+    "z_score": -0.7002,
+    "anomaly": false
+  },
+  {
+    "date": "2026-09-02",
+    "index": 103.5582,
+    "route_window_groups": 35,
+    "baseline": 105.3308,
+    "z_score": -0.4709,
+    "anomaly": false
+  },
+  {
+    "date": "2026-09-03",
+    "index": 104.2472,
+    "route_window_groups": 35,
+    "baseline": 104.3561,
+    "z_score": -0.0356,
+    "anomaly": false
+  },
+  {
+    "date": "2026-09-04",
+    "index": 104.3449,
+    "route_window_groups": 35,
+    "baseline": 103.3613,
+    "z_score": 1.6639,
+    "anomaly": false
+  },
+  {
+    "date": "2026-09-05",
+    "index": 104.7598,
+    "route_window_groups": 35,
+    "baseline": 103.5737,
+    "z_score": 1.8393,
+    "anomaly": false
+  },
+  {
+    "date": "2026-09-06",
+    "index": 105.1116,
+    "route_window_groups": 35,
+    "baseline": 103.9076,
+    "z_score": 2.2005,
+    "anomaly": true
+  },
+  {
+    "date": "2026-09-07",
+    "index": 117.6746,
+    "route_window_groups": 35,
+    "baseline": 104.1703,
+    "z_score": 21.5311,
+    "anomaly": true
+  },
+  {
+    "date": "2026-09-08",
+    "index": 118.0426,
+    "route_window_groups": 35,
+    "baseline": 106.1654,
+    "z_score": 2.3245,
+    "anomaly": true
+  },
+  {
+    "date": "2026-09-09",
+    "index": 117.8341,
+    "route_window_groups": 35,
+    "baseline": 108.2484,
+    "z_score": 1.4561,
+    "anomaly": false
+  },
+  {
+    "date": "2026-09-10",
+    "index": 105.9992,
+    "route_window_groups": 35,
+    "baseline": 110.2878,
+    "z_score": -0.6057,
+    "anomaly": false
+  },
+  {
+    "date": "2026-09-11",
+    "index": 106.0454,
+    "route_window_groups": 35,
+    "baseline": 110.5381,
+    "z_score": -0.655,
+    "anomaly": false
+  },
+  {
+    "date": "2026-09-12",
+    "index": 105.8761,
+    "route_window_groups": 35,
+    "baseline": 110.781,
+    "z_score": -0.7399,
+    "anomaly": false
+  },
+  {
+    "date": "2026-09-13",
+    "index": 105.3499,
+    "route_window_groups": 35,
+    "baseline": 110.9405,
+    "z_score": -0.8638,
+    "anomaly": false
+  }
+]
