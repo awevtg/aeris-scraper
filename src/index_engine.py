@@ -125,7 +125,7 @@ def calculate_route_indices(observations):
         valid_items = [
             item
             for item in items
-            if item["total_fare"] > 0
+            if item["total_fare"] > 0 and item.get("availability_status") == "available"
         ]
 
         if not valid_items:
