@@ -7,6 +7,8 @@ from src.deduplicator import deduplicate_observations
 from src.index_engine import calculate_daily_index, calculate_route_indices
 
 
+from src.routes import ROUTES, BOOKING_WINDOWS
+
 def make_observation(**overrides):
     data = {
         "observation_id": "TEST-001",
@@ -132,3 +134,41 @@ def test_generated_collection_file_exists():
         observations = json.load(f)
 
     assert len(observations) == 35
+
+
+def test_weighted_daily_index_uses_all_strata():
+    from src.index_engine import calculate_weighted_daily_index
+
+    observations = [
+        {
+            "collected_at": "2026-08-15T10:00:00",
+            "origin": route["origin"],
+            "destination": route["destination"],
+            "booking_window": window,
+            "total_fare": 1000,
+            "availability_status": "available",
+        }
+        for route in ROUTES
+        for window in BOOKING_WINDOWS
+    ]
+
+    observations += [
+        {
+            "collected_at": "2026-08-16T10:00:00",
+            "origin": route["origin"],
+            "destination": route["destination"],
+            "booking_window": window,
+            "total_fare": 1100,
+            "availability_status": "available",
+        }
+        for route in ROUTES
+        for window in BOOKING_WINDOWS
+    ]
+
+    results = calculate_weighted_daily_index(observations)
+
+    assert len(results) == 2
+    assert results[0]["index"] == 100.0
+    assert results[1]["index"] == 110.0
+    assert results[1]["route_window_groups"] == 35
+    assert results[1]["weight_coverage"] == 1.0

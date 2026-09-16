@@ -103,6 +103,120 @@ def calculate_daily_index(observations):
     return daily_results
 
 
+def calculate_weighted_daily_index(observations):
+    """
+    Calculate the AERIS daily index using explicit route ×
+    booking-window weights.
+
+    Current MVP weights are equal-weight fallbacks from src.weights.
+    They can later be replaced with validated DGCA traffic weights
+    and empirical booking-window shares.
+
+    Each route × booking-window stratum is first indexed against
+    its own first available observation. The national daily index
+    is then the weighted geometric aggregation of those strata.
+    """
+    from src.weights import build_stratum_weights
+
+    strata = build_stratum_weights()
+
+    stratum_lookup = {
+        (
+            item["origin"],
+            item["destination"],
+            item["booking_window"],
+        ): item["combined_weight"]
+        for item in strata
+    }
+
+    groups = defaultdict(list)
+
+    for obs in observations:
+        if obs.get("availability_status", "available") != "available":
+            continue
+
+        fare = obs.get("total_fare", 0)
+
+        if fare <= 0:
+            continue
+
+        collection_date = obs["collected_at"][:10]
+        key = (
+            obs["origin"],
+            obs["destination"],
+            obs["booking_window"],
+        )
+
+        groups[key].append(
+            {
+                "date": collection_date,
+                "fare": fare,
+            }
+        )
+
+    base_prices = {}
+
+    for key, items in groups.items():
+        items = sorted(items, key=lambda x: x["date"])
+
+        for item in items:
+            if item["fare"] > 0:
+                base_prices[key] = item["fare"]
+                break
+
+    daily_strata = defaultdict(list)
+
+    for key, items in groups.items():
+        base_price = base_prices.get(key)
+        weight = stratum_lookup.get(key)
+
+        if not base_price or not weight:
+            continue
+
+        for item in items:
+            if item["fare"] <= 0:
+                continue
+
+            relative_price = item["fare"] / base_price
+
+            daily_strata[item["date"]].append(
+                {
+                    "relative_price": relative_price,
+                    "weight": weight,
+                }
+            )
+
+    daily_results = []
+
+    for collection_date in sorted(daily_strata.keys()):
+        items = daily_strata[collection_date]
+
+        weighted_log_sum = 0.0
+        total_weight = 0.0
+
+        for item in items:
+            weighted_log_sum += (
+                item["weight"]
+                * math.log(item["relative_price"])
+            )
+            total_weight += item["weight"]
+
+        if total_weight <= 0:
+            continue
+
+        index = math.exp(weighted_log_sum / total_weight) * 100
+
+        daily_results.append(
+            {
+                "date": collection_date,
+                "index": round(index, 4),
+                "route_window_groups": len(items),
+                "weight_coverage": round(total_weight, 6),
+            }
+        )
+
+    return daily_results
+
 def calculate_route_indices(observations):
     """
     Calculate route-level indices relative to the first
