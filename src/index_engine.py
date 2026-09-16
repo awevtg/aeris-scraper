@@ -41,6 +41,12 @@ def calculate_daily_index(observations):
             obs["booking_window"],
         )
 
+        # Only available fares enter the price index.
+        # Sold-out and cancelled observations are retained in the
+        # raw dataset but excluded from price measurement.
+        if obs.get("availability_status", "available") != "available":
+            continue
+
         groups[key].append(
             {
                 "date": collection_date,
