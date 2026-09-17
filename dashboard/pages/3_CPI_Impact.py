@@ -30,6 +30,46 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed",
 )
+st.markdown(
+    """
+    <style>
+
+    .stApp {
+        background: #F5F4EF !important;
+        color: #292925 !important;
+    }
+
+    .block-container {
+        max-width: 1450px !important;
+        padding-top: 1.2rem !important;
+        padding-bottom: 5rem !important;
+    }
+
+    [data-testid="stSidebar"] {
+        display: none !important;
+    }
+
+    [data-testid="stSidebarCollapsedControl"] {
+        display: none !important;
+    }
+
+    #MainMenu {
+        visibility: hidden !important;
+    }
+
+    footer {
+        visibility: hidden !important;
+    }
+
+    header[data-testid="stHeader"] {
+        background: transparent !important;
+        height: 0 !important;
+    }
+
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 # ---------------------------------------------------------
@@ -127,7 +167,59 @@ window_summary["index"] = (
 
 aeris_markdown(
     """
-    <style>
+    
+<style>
+/* AERIS navigation — override Streamlit default page buttons */
+[data-testid="stPageLink"] {
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+[data-testid="stPageLink"] > div {
+    width: auto !important;
+}
+.aeris-nav [data-testid="stPageLink"],
+.aeris-nav [data-testid="stPageLink"] a,
+.aeris-nav [data-testid="stPageLink"] a:visited,
+.aeris-nav [data-testid="stPageLink"] a:hover,
+.aeris-nav [data-testid="stPageLink"] button,
+.aeris-nav [data-testid="stPageLink"] button p,
+.aeris-nav [data-testid="stPageLink"] a p,
+.aeris-nav [data-testid="stPageLink"] span {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #706F68 !important;
+    font-family: "DM Sans", sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    letter-spacing: .14em !important;
+    padding: 7px 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    text-decoration: none !important;
+}
+
+.aeris-nav [data-testid="stPageLink"] a:hover,
+.aeris-nav [data-testid="stPageLink"] button:hover,
+.aeris-nav [data-testid="stPageLink"] a:hover p {
+    color: #17382D !important;
+}
+
+[data-testid="stPageLink"] a p,
+[data-testid="stPageLink"] button p {
+    color: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    letter-spacing: inherit !important;
+}
+
+</style>
+
+<style>
 
     .stApp {
         background: #F5F4EF;
@@ -262,6 +354,64 @@ aeris_markdown(
         line-height: 1.7;
         color: #E5E3DC;
     }
+    /* FINAL AERIS NAV TEXT FIX */
+
+    .aeris-nav,
+    .aeris-nav *,
+    .aeris-nav p,
+    .aeris-nav span,
+    .aeris-nav div,
+    .aeris-nav a,
+    .aeris-nav button {
+        color: #706F68 !important;
+    }
+
+    .aeris-nav a:hover,
+    .aeris-nav button:hover {
+        color: #17382D !important;
+    }
+
+    .aeris-nav .nav-active,
+    .aeris-nav .nav-active * {
+        color: #A74628 !important;
+    }
+
+    
+/* AERIS GLOBAL NAVIGATION VISIBILITY FIX */
+
+[data-testid="stPageLink"],
+[data-testid="stPageLink"] > div,
+[data-testid="stPageLink"] a,
+[data-testid="stPageLink"] a *,
+[data-testid="stPageLink"] a p,
+[data-testid="stPageLink"] a span,
+[data-testid="stPageLink"] button,
+[data-testid="stPageLink"] button *,
+[data-testid="stPageLink"] button p,
+[data-testid="stPageLink"] button span {
+    color: #706F68 !important;
+    -webkit-text-fill-color: #706F68 !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stPageLink"] a:hover,
+[data-testid="stPageLink"] a:hover *,
+[data-testid="stPageLink"] button:hover,
+[data-testid="stPageLink"] button:hover * {
+    color: #17382D !important;
+    -webkit-text-fill-color: #17382D !important;
+}
+
+.nav-active,
+.nav-active * {
+    color: #A74628 !important;
+    -webkit-text-fill-color: #A74628 !important;
+    opacity: 1 !important;
+}
 
     </style>
     """,

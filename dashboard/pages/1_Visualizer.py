@@ -61,10 +61,30 @@ st.markdown(
 
     .block-container {
         max-width: 1450px !important;
-        padding-top: 3rem !important;
+        padding-top: 1.2rem !important;
         padding-bottom: 5rem !important;
     }
 
+    [data-testid="stSidebar"] {
+        display: none !important;
+    }
+
+    [data-testid="stSidebarCollapsedControl"] {
+        display: none !important;
+    }
+
+    #MainMenu {
+        visibility: hidden !important;
+    }
+
+    footer {
+        visibility: hidden !important;
+    }
+
+    header[data-testid="stHeader"] {
+        background: transparent !important;
+        height: 0 !important;
+    }
     /* GLOBAL TEXT */
 
     .stApp p,
@@ -260,11 +280,195 @@ st.markdown(
         font-size: 11px !important;
         margin-top: 18px !important;
     }
+    /* AERIS NAVIGATION */
+
+.aeris-nav {
+    border-bottom: 1px solid #D9D7CE;
+    padding: 4px 0 16px 0;
+    margin-bottom: 28px;
+}
+
+.aeris-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.brand-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #17382D;
+    color: #F5F4EF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+}
+
+.brand-name {
+    color: #17382D;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.brand-subtitle {
+    color: #8A887F;
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    margin-top: 2px;
+}
+
+.aeris-nav [data-testid="stPageLink"] {
+    margin: 0 !important;
+}
+
+.aeris-nav [data-testid="stPageLink"] a {
+    color: #706F68 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 7px 2px !important;
+    min-height: 0 !important;
+    font-family: "DM Sans", sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.2px !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+}
+
+.aeris-nav [data-testid="stPageLink"] a:hover {
+    color: #17382D !important;
+    background: transparent !important;
+}
+
+.nav-active {
+    color: #A74628 !important;
+    font-family: "DM Sans", sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.2px !important;
+    text-transform: uppercase !important;
+    padding: 7px 2px 5px 2px !important;
+    border-bottom: 2px solid #A74628;
+    display: inline-block;
+}
+    /* FINAL AERIS NAV TEXT FIX */
+
+    .aeris-nav [data-testid="stPageLink"] a,
+    .aeris-nav [data-testid="stPageLink"] a *,
+    .aeris-nav [data-testid="stPageLink"] a p,
+    .aeris-nav [data-testid="stPageLink"] a span {
+        color: #706F68 !important;
+        -webkit-text-fill-color: #706F68 !important;
+        opacity: 1 !important;
+    }
+
+    .aeris-nav [data-testid="stPageLink"] a:hover,
+    .aeris-nav [data-testid="stPageLink"] a:hover *,
+    .aeris-nav [data-testid="stPageLink"] a:hover p,
+    .aeris-nav [data-testid="stPageLink"] a:hover span {
+        color: #17382D !important;
+        -webkit-text-fill-color: #17382D !important;
+        opacity: 1 !important;
+    }
+
+    .aeris-nav .nav-active,
+    .aeris-nav .nav-active * {
+        color: #A74628 !important;
+        -webkit-text-fill-color: #A74628 !important;
+        opacity: 1 !important;
+    }
+    
+    .aeris-nav .nav-active,
+    .aeris-nav .nav-active * {
+        color: #A74628 !important;
+    }
+
+    
+/* AERIS GLOBAL NAVIGATION VISIBILITY FIX */
+
+[data-testid="stPageLink"],
+[data-testid="stPageLink"] > div,
+[data-testid="stPageLink"] a,
+[data-testid="stPageLink"] a *,
+[data-testid="stPageLink"] a p,
+[data-testid="stPageLink"] a span,
+[data-testid="stPageLink"] button,
+[data-testid="stPageLink"] button *,
+[data-testid="stPageLink"] button p,
+[data-testid="stPageLink"] button span {
+    color: #706F68 !important;
+    -webkit-text-fill-color: #706F68 !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stPageLink"] a:hover,
+[data-testid="stPageLink"] a:hover *,
+[data-testid="stPageLink"] button:hover,
+[data-testid="stPageLink"] button:hover * {
+    color: #17382D !important;
+    -webkit-text-fill-color: #17382D !important;
+}
+
+.nav-active,
+.nav-active * {
+    color: #A74628 !important;
+    -webkit-text-fill-color: #A74628 !important;
+    opacity: 1 !important;
+}
 
     </style>
     """,
     unsafe_allow_html=True,
 )
+# =========================================================
+# AERIS NAVIGATION
+# =========================================================
+
+st.markdown('<div class="aeris-nav">', unsafe_allow_html=True)
+
+left, right = st.columns([2.2, 5.8])
+
+with left:
+    st.markdown(
+        """
+        <div class="aeris-brand">
+            <div class="brand-mark">✈</div>
+            <div>
+                <div class="brand-name">AERIS</div>
+                <div class="brand-subtitle">AIRFARE INTELLIGENCE</div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+with right:
+    n1, n2, n3, n4 = st.columns(4)
+
+    with n1:
+        st.page_link("app.py", label="NARRATIVE")
+
+    with n2:
+        st.markdown('<div class="nav-active">VISUALIZER</div>', unsafe_allow_html=True)
+
+    with n3:
+        st.page_link("pages/2_Blooms_Taxonomy.py", label="TAXONOMY")
+
+    with n4:
+        st.page_link("pages/3_CPI_Impact.py", label="CPI IMPACT")
+
+st.markdown("</div>", unsafe_allow_html=True)
 
 
 # =========================================================

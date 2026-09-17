@@ -40,399 +40,214 @@ st.set_page_config(
 aeris_markdown(
     """
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+    :root { --cream:#F5F4EF; --paper:#FBFAF6; --green:#17382D; --green-soft:#DCE6DF; --rust:#A74628; --rust-soft:#F0DCD3; --ink:#292925; --muted:#706F68; --line:#D9D7CE; --line-dark:#C6C3B9; }
+    .stApp{background:var(--cream);color:var(--ink)}
+    .main .block-container{max-width:1440px;padding:1.15rem 4.5rem 4.5rem}
+    html,body,[class*=css]{font-family:"DM Sans",sans-serif}
+    #MainMenu,footer{visibility:hidden}
+    header,[data-testid="stHeader"]{background:transparent!important}
+    [data-testid="stToolbar"],[data-testid="stDecoration"]{display:none}
+    [data-testid="column"]{min-width:0}
+    .topbar{min-height:54px;display:flex;align-items:center}
+    .brand{display:flex;align-items:center;gap:13px}
+    .brand-mark{width:40px;height:40px;flex:0 0 40px;border-radius:50%;background:var(--green);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:18px}
+    .brand-name{color:var(--green);font-size:21px;font-weight:700;letter-spacing:.19em;line-height:1}
+    .brand-subtitle{color:var(--muted);font-size:8px;font-weight:600;letter-spacing:.13em;margin-top:5px}
+    .nav-wrap{display:flex;justify-content:flex-end;align-items:center;gap:23px;min-height:54px;flex-wrap:nowrap}
+    .nav-wrap + *{margin-top:0!important}
+    .nav-current,[data-testid="stPageLink"] a{color:var(--muted)!important;font-size:9px!important;font-weight:700!important;letter-spacing:.13em!important;text-transform:uppercase!important;text-decoration:none!important;padding:7px 0!important;border-bottom:1px solid transparent;white-space:nowrap}
+    .nav-current{color:var(--green)!important;border-bottom-color:var(--rust)}
+    [data-testid="stPageLink"]{display:inline-flex!important;width:auto!important;margin:0!important;padding:0!important}
+    [data-testid="stPageLink"] > div{padding:0!important}
+    [data-testid="stPageLink"] a{display:inline-block!important}
+    [data-testid="stPageLink"] a:hover{color:var(--green)!important;border-bottom-color:var(--rust)}
+    .hairline{height:1px;background:var(--line);margin:14px 0 68px}
+    .eyebrow{color:var(--rust);font-size:9px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;margin-bottom:11px}
+    .section-title{color:var(--green);font-family:"Cormorant Garamond",Georgia,serif;font-size:48px;font-weight:500;line-height:.95;letter-spacing:-.018em;margin:0}
+    .section-copy{max-width:610px;color:var(--muted);font-size:12px;line-height:1.7;margin-top:14px}
+    .hero{padding-bottom:30px}
+    .hero-kicker{color:var(--rust);font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
+    .hero-title{color:var(--green);font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(56px,5.4vw,82px);font-weight:500;line-height:.84;letter-spacing:-.028em;margin:0;max-width:790px}
+    .hero-description{max-width:620px;color:var(--muted);font-size:12px;line-height:1.75;margin-top:24px}
+    .hero-side{border-left:1px solid var(--line);padding:8px 0 10px 35px;min-height:218px}
+    .kpi-label,.card-label{color:var(--muted);font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+    .kpi-value{color:var(--green);font-family:"Cormorant Garamond",Georgia,serif;font-size:72px;font-weight:500;line-height:.82;letter-spacing:-.025em;margin-top:15px}
+    .kpi-change{color:var(--rust);font-size:10px;font-weight:700;margin-top:10px}
+    .kpi-rule{width:38px;height:2px;background:var(--rust);margin:20px 0 15px}
+    .kpi-meta{color:var(--muted);font-size:9px;line-height:1.75}
+    .card,.chart-shell,.route-card{background:var(--paper);border:1px solid var(--line);border-radius:11px}
+    .card{padding:23px}.chart-shell{padding:9px 14px 7px}.chart-caption{color:var(--muted);font-size:8px;letter-spacing:.05em;margin:0 3px 2px}
+    .card-title{color:var(--green);font-family:"Cormorant Garamond",Georgia,serif;font-size:28px;font-weight:600;line-height:1}
+    .route-card{padding:19px;min-height:151px;transition:border-color .16s ease,transform .16s ease}.route-card:hover{border-color:var(--line-dark);transform:translateY(-2px)}
+    .route{color:var(--green);font-family:"Cormorant Garamond",Georgia,serif;font-size:29px;font-weight:600;line-height:1;margin-top:8px}.route-index{color:var(--green);font-family:"Cormorant Garamond",Georgia,serif;font-size:40px;line-height:.9;margin-top:20px}.route-meta{color:var(--muted);font-size:8px;letter-spacing:.04em;margin-top:8px}
+    .status-high,.status-medium{display:inline-block;border-radius:999px;padding:5px 9px;font-size:8px;font-weight:700;letter-spacing:.12em}.status-high{color:var(--rust);background:var(--rust-soft)}.status-medium{color:#776526;background:#E9E5D3}
+    .aeris-table{width:100%;border-collapse:collapse;font-family:"DM Sans",sans-serif;font-size:10px;background:var(--paper);border:1px solid var(--line);border-radius:11px;overflow:hidden}.aeris-table th{background:var(--green);color:var(--paper);padding:12px 14px;text-align:left;font-size:8px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}.aeris-table td{color:var(--ink);padding:12px 14px;border-bottom:1px solid #E5E3DC;white-space:nowrap}.aeris-table tr:last-child td{border-bottom:none}.aeris-table tr:hover td{background:#F0EDE5}.aeris-table td:last-child{color:var(--rust);font-weight:700}
+    .horizon-card{background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:17px 10px;min-height:105px;text-align:center}.horizon-value{color:var(--green);font-family:"Cormorant Garamond",Georgia,serif;font-size:36px;line-height:1;margin-top:12px}.horizon-meaning{color:var(--muted);font-size:8px;margin-top:6px}
+    .method-card{border-top:1px solid var(--line);padding-top:15px}.method-number{color:var(--rust);font-family:"Cormorant Garamond",Georgia,serif;font-size:25px;line-height:1}.method-title{color:var(--green);font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;font-weight:600;margin-top:5px}.method-copy{color:var(--muted);font-size:10px;line-height:1.65;margin-top:7px}
+    .stButton>button{border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--green);font-family:"DM Sans",sans-serif;font-size:10px;font-weight:700}.stButton>button:hover{border-color:var(--green);color:var(--green)}
+    .footer{border-top:1px solid var(--line);margin-top:70px;padding-top:18px;color:var(--muted);font-size:8px;font-weight:600;letter-spacing:.11em;text-transform:uppercase}
+    [data-testid="stPageLink"] a, [data-testid="stPageLink"] a:visited{color:var(--muted)!important;background:transparent!important}
+    [data-testid="stPageLink"] a:hover{color:var(--green)!important;background:transparent!important}
+    [data-testid="stPageLink"] p{margin:0!important}
+    /* Hide Streamlit's built-in navigation sidebar */
 
-    @import url(
-        'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap'
-    );
-
-    :root {
-        --cream: #F5F4EF;
-        --paper: #FBFAF6;
-        --green: #17382D;
-        --green-soft: #DCE6DF;
-        --rust: #A74628;
-        --rust-soft: #F0DCD3;
-        --ink: #292925;
-        --muted: #706F68;
-        --line: #D9D7CE;
+    [data-testid="stSidebar"] {
+        display: none !important;
     }
 
-    /* Page */
-
-    .stApp {
-        background: var(--cream);
-        color: var(--ink);
+    [data-testid="stSidebarCollapsedControl"] {
+        display: none !important;
+    }
+    /* FINAL AERIS NAVIGATION */
+    .nav-current{
+        display:inline-flex!important;
+        align-items:center!important;
+        min-height:32px!important;
+        padding:7px 0!important;
+        color:#17382D!important;
+        font-family:"DM Sans",sans-serif!important;
+        font-size:9px!important;
+        font-weight:700!important;
+        letter-spacing:.13em!important;
+        text-transform:uppercase!important;
+        border-bottom:1px solid #A74628!important;
+        white-space:nowrap!important;
     }
 
-    .main .block-container {
-        max-width: 1380px;
-        padding-top: 1.5rem;
-        padding-bottom: 4rem;
+    [data-testid="stPageLink"]{
+        width:100%!important;
+        min-width:0!important;
+        margin:0!important;
+        padding:0!important;
     }
 
-    /* Hide Streamlit chrome */
-
-    #MainMenu {
-        visibility: hidden;
+    [data-testid="stPageLink"] > div{
+        width:100%!important;
+        min-width:0!important;
+        margin:0!important;
+        padding:0!important;
     }
 
-    footer {
-        visibility: hidden;
+    [data-testid="stPageLink"] a,
+    [data-testid="stPageLink"] a:visited,
+    [data-testid="stPageLink"] button{
+        display:flex!important;
+        align-items:center!important;
+        justify-content:flex-start!important;
+        width:max-content!important;
+        min-width:0!important;
+        height:32px!important;
+        min-height:32px!important;
+        margin:0!important;
+        padding:7px 0!important;
+        border:0!important;
+        border-bottom:1px solid transparent!important;
+        border-radius:0!important;
+        box-shadow:none!important;
+        background:transparent!important;
+        background-color:transparent!important;
+        color:#706F68!important;
+        font-family:"DM Sans",sans-serif!important;
+        font-size:9px!important;
+        font-weight:700!important;
+        letter-spacing:.13em!important;
+        line-height:1!important;
+        text-transform:uppercase!important;
+        white-space:nowrap!important;
     }
 
-    header {
-        background: transparent !important;
+    [data-testid="stPageLink"] a:hover,
+    [data-testid="stPageLink"] button:hover{
+        color:#17382D!important;
+        background:transparent!important;
+        border-bottom-color:#A74628!important;
     }
 
-    /* Default text */
-
-    html, body, [class*="css"] {
-        font-family: "DM Sans", sans-serif;
+    [data-testid="stPageLink"] a p,
+    [data-testid="stPageLink"] button p,
+    [data-testid="stPageLink"] a span,
+    [data-testid="stPageLink"] button span{
+        margin:0!important;
+        padding:0!important;
+        color:inherit!important;
+        font-family:inherit!important;
+        font-size:inherit!important;
+        font-weight:inherit!important;
+        letter-spacing:inherit!important;
+        text-transform:inherit!important;
     }
+    @media(max-width:900px){.main .block-container{padding-left:1.35rem;padding-right:1.35rem}.hero-title{font-size:55px}.section-title{font-size:40px}.hero-side{border-left:none;border-top:1px solid var(--line);padding:24px 0 0;margin-top:10px}.nav-wrap{gap:12px}}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
-    /* Brand */
-
-    .brand {
-        display: flex;
-        align-items: center;
-        gap: 14px;
+# Final navigation override: keep Streamlit page links visually quiet.
+aeris_markdown(
+    """
+    <style>
+    [data-testid="stPageLink"] {
+        width:auto!important; margin:0!important; padding:0!important;
     }
-
-    .brand-mark {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        background: var(--green);
-        color: var(--cream);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 23px;
+    [data-testid="stPageLink"] > div {
+        width:auto!important; padding:0!important;
     }
-
-    .brand-name {
-        font-family: "DM Sans", sans-serif;
-        font-size: 25px;
-        font-weight: 700;
-        letter-spacing: 0.16em;
-        color: var(--green);
+    [data-testid="stPageLink"] a,
+    [data-testid="stPageLink"] a:visited,
+    [data-testid="stPageLink"] a:hover,
+    [data-testid="stPageLink"] button {
+        display:inline-flex!important; align-items:center!important;
+        width:auto!important; min-height:0!important; height:auto!important;
+        padding:7px 0!important; margin:0!important;
+        border:0!important; border-bottom:1px solid transparent!important;
+        border-radius:0!important; box-shadow:none!important;
+        background:transparent!important; background-color:transparent!important;
+        color:#706F68!important; font-family:"DM Sans",sans-serif!important;
+        font-size:9px!important; font-weight:700!important;
+        letter-spacing:.13em!important; text-transform:uppercase!important;
     }
-
-    .brand-subtitle {
-        font-size: 9px;
-        letter-spacing: 0.16em;
-        color: var(--muted);
-        margin-top: -2px;
+    [data-testid="stPageLink"] a:hover,
+    [data-testid="stPageLink"] button:hover {
+        color:#17382D!important; border-bottom-color:#A74628!important;
     }
+    [data-testid="stPageLink"] p { margin:0!important; color:inherit!important; }
+    
+/* AERIS GLOBAL NAVIGATION VISIBILITY FIX */
 
-    /* Navigation */
+[data-testid="stPageLink"],
+[data-testid="stPageLink"] > div,
+[data-testid="stPageLink"] a,
+[data-testid="stPageLink"] a *,
+[data-testid="stPageLink"] a p,
+[data-testid="stPageLink"] a span,
+[data-testid="stPageLink"] button,
+[data-testid="stPageLink"] button *,
+[data-testid="stPageLink"] button p,
+[data-testid="stPageLink"] button span {
+    color: #706F68 !important;
+    -webkit-text-fill-color: #706F68 !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
 
-    .nav {
-        display: flex;
-        justify-content: flex-end;
-        gap: 32px;
-        align-items: center;
-        height: 48px;
-        font-size: 12px;
-        color: var(--muted);
-        letter-spacing: 0.03em;
-    }
+[data-testid="stPageLink"] a:hover,
+[data-testid="stPageLink"] a:hover *,
+[data-testid="stPageLink"] button:hover,
+[data-testid="stPageLink"] button:hover * {
+    color: #17382D !important;
+    -webkit-text-fill-color: #17382D !important;
+}
 
-    .nav-active {
-        color: var(--green);
-        font-weight: 700;
-        border-bottom: 1px solid var(--green);
-        padding-bottom: 5px;
-    }
-
-    /* Divider */
-
-    .hairline {
-        height: 1px;
-        background: var(--line);
-        margin: 18px 0 54px 0;
-    }
-
-    /* Section labels */
-
-    .eyebrow {
-        font-family: "DM Sans", sans-serif;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: var(--rust);
-        margin-bottom: 10px;
-    }
-
-    .section-title {
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: 51px;
-        line-height: 0.98;
-        font-weight: 500;
-        color: var(--green);
-        margin: 0;
-    }
-
-    .section-copy {
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 1.65;
-        max-width: 560px;
-        margin-top: 15px;
-    }
-
-    /* Hero */
-
-    .hero {
-        padding-bottom: 40px;
-    }
-
-    .hero-kicker {
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        color: var(--rust);
-        font-weight: 700;
-        margin-bottom: 14px;
-    }
-
-    .aeris-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-family: "DM Sans", sans-serif;
-        font-size: 13px;
-        background: #FBFAF6;
-        border: 1px solid #D9D7CE;
-        border-radius: 14px;
-        overflow: hidden;
-    }
-
-    .aeris-table th {
-        background: #17382D;
-        color: #FBFAF6;
-        padding: 14px 16px;
-        text-align: left;
-        font-size: 10px;
-        letter-spacing: 1.3px;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-
-    .aeris-table td {
-        padding: 14px 16px;
-        color: #292925;
-        border-bottom: 1px solid #E5E3DC;
-        white-space: nowrap;
-    }
-
-    .aeris-table tr:last-child td {
-        border-bottom: none;
-    }
-
-    .aeris-table tr:hover td {
-        background: #F0EDE5;
-    }
-
-    .aeris-table td:last-child {
-        color: #A74628;
-        font-weight: 700;
-    }
-
-    .hero-title {
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: 76px;
-        line-height: 0.88;
-        font-weight: 500;
-        color: var(--green);
-        margin: 0;
-    }
-
-    .hero-description {
-        max-width: 640px;
-        margin-top: 22px;
-        color: var(--muted);
-        font-size: 15px;
-        line-height: 1.7;
-    }
-
-    /* KPI */
-
-    .kpi-label {
-        font-size: 10px;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--muted);
-        font-weight: 700;
-    }
-
-    .kpi-value {
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: 60px;
-        line-height: 0.9;
-        color: var(--green);
-        margin-top: 8px;
-    }
-
-    .kpi-change {
-        margin-top: 10px;
-        font-size: 12px;
-        font-weight: 700;
-        color: var(--rust);
-    }
-
-    /* Cards */
-
-    .card {
-        background: var(--paper);
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        padding: 25px;
-    }
-
-    .card-title {
-        font-family: "Cormorant Garamond", Georgia, serif;
-        color: var(--green);
-        font-size: 30px;
-        font-weight: 600;
-        line-height: 1;
-    }
-
-    .card-label {
-        color: var(--muted);
-        font-size: 9px;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        font-weight: 700;
-    }
-
-    /* Route cards */
-
-    .route-card {
-        background: var(--paper);
-        border: 1px solid var(--line);
-        border-radius: 15px;
-        padding: 22px;
-        min-height: 175px;
-    }
-
-    .route {
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: 31px;
-        color: var(--green);
-        font-weight: 600;
-    }
-
-    .route-index {
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: 42px;
-        color: var(--green);
-        line-height: 1;
-        margin-top: 22px;
-    }
-
-    .route-meta {
-        color: var(--muted);
-        font-size: 11px;
-        margin-top: 7px;
-    }
-
-    /* Status */
-
-    .status-high {
-        display: inline-block;
-        background: var(--rust-soft);
-        color: var(--rust);
-        padding: 5px 9px;
-        border-radius: 999px;
-        font-size: 9px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-    }
-
-    .status-medium {
-        display: inline-block;
-        background: #E9E5D3;
-        color: #776526;
-        padding: 5px 9px;
-        border-radius: 999px;
-        font-size: 9px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-    }
-
-    /* Methodology */
-
-    .method-number {
-        font-family: "Cormorant Garamond", Georgia, serif;
-        color: var(--rust);
-        font-size: 28px;
-    }
-
-    .method-title {
-        font-family: "Cormorant Garamond", Georgia, serif;
-        color: var(--green);
-        font-size: 25px;
-        font-weight: 600;
-    }
-
-    .method-copy {
-        color: var(--muted);
-        font-size: 12px;
-        line-height: 1.6;
-    }
-
-    /* Streamlit chart */
-
-    [data-testid="stMetric"] {
-        background: transparent;
-        border: none;
-    }
-
-    [data-testid="stMetricLabel"] {
-        font-size: 10px;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-    }
-
-    [data-testid="stMetricValue"] {
-        color: var(--green);
-        font-family: "Cormorant Garamond", Georgia, serif;
-    }
-
-    /* Buttons */
-
-    .stButton > button {
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: var(--paper);
-        color: var(--green);
-        font-family: "DM Sans", sans-serif;
-        font-size: 11px;
-    }
-
-    .stButton > button:hover {
-        border-color: var(--green);
-        color: var(--green);
-    }
-
-    /* Dataframe */
-
-    [data-testid="stDataFrame"] {
-        border: 1px solid var(--line);
-    }
-
-    /* Footer */
-
-    .footer {
-        border-top: 1px solid var(--line);
-        margin-top: 70px;
-        padding-top: 20px;
-        color: var(--muted);
-        font-size: 10px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-    }
+.nav-active,
+.nav-active * {
+    color: #A74628 !important;
+    -webkit-text-fill-color: #A74628 !important;
+    opacity: 1 !important;
+}
 
     </style>
     """,
@@ -561,17 +376,31 @@ with header_left:
 
 with header_right:
 
-    aeris_markdown(
-        """
-        <div class="nav">
-            <a href="/?page=visualizer" target="_self" class="nav-link nav-active">Narrative</a>
-            <a href="/Visualizer" target="_self" class="nav-link">Visualizer</a>
-            <a href="/Taxonomy_Engine" target="_self" class="nav-link">Taxonomy Engine</a>
-            <a href="/CPI_Impact" target="_self" class="nav-link">CPI Impact</a>
-        </div>
-        """,
-        unsafe_allow_html=True,
-)
+    nav_cols = st.columns([1, 1, 1, 1], gap="small")
+
+    with nav_cols[0]:
+        aeris_markdown(
+            '<div class="nav-current">NARRATIVE</div>',
+            unsafe_allow_html=True,
+        )
+
+    with nav_cols[1]:
+        st.page_link(
+            "pages/1_Visualizer.py",
+            label="VISUALIZER",
+        )
+
+    with nav_cols[2]:
+        st.page_link(
+            "pages/2_Blooms_Taxonomy.py",
+            label="TAXONOMY",
+        )
+
+    with nav_cols[3]:
+        st.page_link(
+            "pages/3_CPI_Impact.py",
+            label="CPI IMPACT",
+        )
 
 
 aeris_markdown(
@@ -640,37 +469,21 @@ with hero_left:
 with hero_right:
 
     aeris_markdown(
-        '<div class="kpi-label">Current Airfare Index</div>',
-        unsafe_allow_html=True,
-)
-
-    aeris_markdown(
-        f'<div class="kpi-value">{latest_index:.2f}</div>',
-        unsafe_allow_html=True,
-)
-
-    aeris_markdown(
-        f'<div class="kpi-change">'
-        f'{change_pct:+.2f}% since base period'
-        f'</div>',
-        unsafe_allow_html=True,
-)
-
-    aeris_markdown(
         f"""
-        <div style="
-            margin-top:28px;
-            color:#706F68;
-            font-size:11px;
-            line-height:1.7;
-        ">
-            30-day observation window<br>
-            7 representative corridors<br>
-            5 booking horizons
+        <div class="hero-side">
+            <div class="kpi-label">Current Airfare Index</div>
+            <div class="kpi-value">{latest_index:.2f}</div>
+            <div class="kpi-change">{change_pct:+.2f}% since base period</div>
+            <div class="kpi-rule"></div>
+            <div class="kpi-meta">
+                30-day observation window<br>
+                7 representative corridors<br>
+                5 booking horizons
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
-)
+    )
 
 
 # =========================================================
