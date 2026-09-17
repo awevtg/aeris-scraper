@@ -5,6 +5,8 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
+import plotly.graph_objects as go
+
 
 # ---------------------------------------------------------
 # PROJECT PATH
@@ -413,63 +415,145 @@ aeris_markdown(
     opacity: 1 !important;
 }
 
-    </style>
+    
+/* =========================================================
+   AERIS NAVIGATION SYSTEM — CONSISTENT ACROSS ALL PAGES
+   ========================================================= */
+
+.aeris-nav {
+    border-bottom: 1px solid #D9D7CE !important;
+    padding: 4px 0 16px 0 !important;
+    margin-bottom: 28px !important;
+}
+
+.aeris-nav .brand-name,
+.aeris-nav .brand-name *,
+.aeris-nav .brand-subtitle,
+.aeris-nav .brand-subtitle *,
+.aeris-nav .brand-sub {
+    font-family: "DM Sans", sans-serif !important;
+}
+
+.aeris-nav .brand-name {
+    color: #17382D !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: 2px !important;
+}
+
+.aeris-nav .brand-subtitle,
+.aeris-nav .brand-sub {
+    color: #8A887F !important;
+    font-size: 8px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1.2px !important;
+}
+
+.aeris-nav .brand-mark {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: #17382D !important;
+    color: #F5F4EF !important;
+}
+
+.aeris-nav [data-testid="stPageLink"],
+.aeris-nav [data-testid="stPageLink"] a,
+.aeris-nav [data-testid="stPageLink"] a *,
+.aeris-nav [data-testid="stPageLink"] a p,
+.aeris-nav [data-testid="stPageLink"] a span,
+.aeris-nav [data-testid="stPageLink"] button,
+.aeris-nav [data-testid="stPageLink"] button *,
+.aeris-nav [data-testid="stPageLink"] button p,
+.aeris-nav [data-testid="stPageLink"] button span {
+    font-family: "DM Sans", sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    letter-spacing: .13em !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    color: #706F68 !important;
+    -webkit-text-fill-color: #706F68 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+}
+
+.aeris-nav [data-testid="stPageLink"] a:hover,
+.aeris-nav [data-testid="stPageLink"] a:hover *,
+.aeris-nav [data-testid="stPageLink"] button:hover,
+.aeris-nav [data-testid="stPageLink"] button:hover * {
+    color: #17382D !important;
+    -webkit-text-fill-color: #17382D !important;
+}
+
+.aeris-nav .nav-active,
+.aeris-nav .nav-active *,
+.aeris-nav .nav-current,
+.aeris-nav .nav-current * {
+    color: #A74628 !important;
+    -webkit-text-fill-color: #A74628 !important;
+    font-family: "DM Sans", sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    letter-spacing: .13em !important;
+    text-transform: uppercase !important;
+}
+
+</style>
     """,
     unsafe_allow_html=True,
 )
 
 
 # ---------------------------------------------------------
-# HEADER
+# HEADER / NAVIGATION
 # ---------------------------------------------------------
 
-aeris_markdown(
-    """
-    <div style="
-        display:flex;
-        align-items:center;
-        border-bottom:1px solid #D9D7CE;
-        padding:10px 0 25px 0;
-        margin-bottom:55px;
-    ">
+st.markdown('<div class="aeris-nav">', unsafe_allow_html=True)
 
-        <div style="
-            width:42px;
-            height:42px;
-            border-radius:11px;
-            background:#17382D;
-            color:#F5F4EF;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:20px;
-            margin-right:12px;
-        ">✈</div>
+left, right = st.columns([2.2, 5.8])
 
-        <div>
-            <div style="
-                font-family:Georgia,serif;
-                font-size:25px;
-                color:#17382D;
-                font-weight:700;
-                letter-spacing:1px;
-            ">AERIS</div>
-
-            <div style="
-                font-family:Arial,sans-serif;
-                font-size:9px;
-                letter-spacing:1.4px;
-                color:#77766F;
-            ">
-                AIRFARE ECONOMICS & REGIONAL INTELLIGENCE
+with left:
+    st.markdown(
+        """
+        <div class="aeris-brand">
+            <div class="brand-mark">✈</div>
+            <div>
+                <div class="brand-name">AERIS</div>
+                <div class="brand-subtitle">AIRFARE INTELLIGENCE</div>
             </div>
         </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
+with right:
+    n1, n2, n3, n4 = st.columns(4)
 
+    with n1:
+        st.page_link("app.py", label="NARRATIVE")
+
+    with n2:
+        st.page_link(
+            "pages/1_Visualizer.py",
+            label="VISUALIZER",
+        )
+
+    with n3:
+        st.page_link(
+            "pages/2_Blooms_Taxonomy.py",
+            label="TAXONOMY",
+        )
+
+    with n4:
+        st.markdown(
+            '<div class="nav-active">CPI IMPACT</div>',
+            unsafe_allow_html=True,
+        )
+
+st.markdown("</div>", unsafe_allow_html=True)
 
 # ---------------------------------------------------------
 # HERO
@@ -521,7 +605,151 @@ aeris_markdown(
     """,
     unsafe_allow_html=True,
 )
+# ---------------------------------------------------------
+# CPI INTERPRETATION
+# ---------------------------------------------------------
 
+st.html(
+    """
+    <div class="benchmark-card">
+        <div class="benchmark-title">
+            How to read the CPI connection
+        </div>
+
+        <div class="benchmark-text">
+            A rise in the AERIS airfare index indicates that observed
+            airfare levels have increased relative to the index base.
+            This does not directly represent a percentage-point change
+            in India's headline CPI.
+        </div>
+
+        <div style="
+            display:grid;
+            grid-template-columns:repeat(3, 1fr);
+            gap:18px;
+            margin-top:24px;
+        ">
+            <div style="
+                border:1px solid rgba(245,244,239,.22);
+                border-radius:12px;
+                padding:18px;
+            ">
+                <div style="
+                    font-family:Arial,sans-serif;
+                    font-size:10px;
+                    letter-spacing:1.4px;
+                    color:#D8A18F;
+                    font-weight:700;
+                    text-transform:uppercase;
+                    margin-bottom:8px;
+                ">01 · SIGNAL</div>
+
+                <div style="
+                    font-family:Georgia,serif;
+                    font-size:19px;
+                    color:#F5F4EF;
+                ">Airfare movement</div>
+
+                <div style="
+                    font-family:Arial,sans-serif;
+                    font-size:12px;
+                    line-height:1.6;
+                    color:#D9D7CE;
+                    margin-top:7px;
+                ">
+                    Measures how observed airfare levels move relative
+                    to the AERIS base period.
+                </div>
+            </div>
+
+            <div style="
+                border:1px solid rgba(245,244,239,.22);
+                border-radius:12px;
+                padding:18px;
+            ">
+                <div style="
+                    font-family:Arial,sans-serif;
+                    font-size:10px;
+                    letter-spacing:1.4px;
+                    color:#D8A18F;
+                    font-weight:700;
+                    text-transform:uppercase;
+                    margin-bottom:8px;
+                ">02 · CONTEXT</div>
+
+                <div style="
+                    font-family:Georgia,serif;
+                    font-size:19px;
+                    color:#F5F4EF;
+                ">CPI relevance</div>
+
+                <div style="
+                    font-family:Arial,sans-serif;
+                    font-size:12px;
+                    line-height:1.6;
+                    color:#D9D7CE;
+                    margin-top:7px;
+                ">
+                    Provides an airfare-specific signal that can be
+                    interpreted alongside official CPI information.
+                </div>
+            </div>
+
+            <div style="
+                border:1px solid rgba(245,244,239,.22);
+                border-radius:12px;
+                padding:18px;
+            ">
+                <div style="
+                    font-family:Arial,sans-serif;
+                    font-size:10px;
+                    letter-spacing:1.4px;
+                    color:#D8A18F;
+                    font-weight:700;
+                    text-transform:uppercase;
+                    margin-bottom:8px;
+                ">03 · FUTURE</div>
+
+                <div style="
+                    font-family:Georgia,serif;
+                    font-size:19px;
+                    color:#F5F4EF;
+                ">Official weighting</div>
+
+                <div style="
+                    font-family:Arial,sans-serif;
+                    font-size:12px;
+                    line-height:1.6;
+                    color:#D9D7CE;
+                    margin-top:7px;
+                ">
+                    Future versions can incorporate official category
+                    weights and benchmark data for stronger comparison.
+                </div>
+            </div>
+        </div>
+    </div>
+    """
+)
+
+aeris_markdown(
+    """
+    <div style="
+        border-top:1px solid #D9D7CE;
+        margin-top:55px;
+        padding-top:20px;
+        text-align:center;
+        font-family:Arial,sans-serif;
+        font-size:10px;
+        letter-spacing:1.2px;
+        color:#77766F;
+    ">
+        AERIS · Airfare Economics & Regional Intelligence ·
+        Prototype · Synthetic 30-day backtest
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
 # ---------------------------------------------------------
 # KEY METRICS
@@ -624,7 +852,7 @@ pressure_chart = (
         y=alt.Y(
             "index:Q",
             title="AERIS airfare index",
-            scale=alt.Scale(zero=False),
+            scale=alt.Scale(domain=[98, 123], zero=False),
             axis=alt.Axis(
                 labelColor="#292925",
                 titleColor="#62615B",
@@ -751,63 +979,81 @@ aeris_markdown(
     unsafe_allow_html=True,
 )
 
-window_chart = (
-    alt.Chart(window_summary)
-    .mark_line(
-        color="#A74628",
-        strokeWidth=3,
-        point=True,
-    )
-    .encode(
-        x=alt.X(
-            "booking_window:O",
-            title="Booking window",
-            sort=[1, 7, 15, 30, 45],
-            axis=alt.Axis(
-                labelExpr="'T+' + datum.label",
-                labelColor="#292925",
-                titleColor="#62615B",
+
+window_plot = window_summary.copy()
+
+window_plot["booking_window"] = pd.Categorical(
+    "T+" + window_plot["booking_window"].astype(str),
+    categories=["T+1", "T+7", "T+15", "T+30", "T+45"],
+    ordered=True,
+)
+
+window_plot = window_plot.sort_values("booking_window")
+
+fig = go.Figure()
+
+fig.add_trace(
+    go.Scatter(
+        x=window_plot["booking_window"],
+        y=window_plot["index"],
+        mode="lines+markers",
+        line=dict(
+            color="#17382D",
+            width=3,
+        ),
+        marker=dict(
+            color="#A74628",
+            size=9,
+            line=dict(
+                color="#F7F5EF",
+                width=2,
             ),
         ),
-        y=alt.Y(
-            "index:Q",
-            title="Relative airfare index",
-            scale=alt.Scale(zero=False),
-            axis=alt.Axis(
-                labelColor="#292925",
-                titleColor="#62615B",
-                gridColor="#D9D7CE",
-            ),
+        hovertemplate=(
+            "<b>%{x}</b><br>"
+            "Relative index: %{y:.2f}"
+            "<extra></extra>"
         ),
-        tooltip=[
-            alt.Tooltip(
-                "booking_window:O",
-                title="Booking window",
-            ),
-            alt.Tooltip(
-                "index:Q",
-                title="Relative index",
-                format=".2f",
-            ),
-            alt.Tooltip(
-                "total_fare:Q",
-                title="Average fare",
-                format="₹,.0f",
-            ),
-        ],
-    )
-    .properties(
-        height=330,
-        background="transparent",
-    )
-    .configure_view(
-        strokeWidth=0,
     )
 )
 
-st.altair_chart(
-    window_chart,
+fig.update_layout(
+    height=330,
+    margin=dict(l=20, r=20, t=10, b=10),
+    paper_bgcolor="rgba(0,0,0,0)",
+    plot_bgcolor="rgba(0,0,0,0)",
+    font=dict(
+        family="DM Sans, sans-serif",
+        color="#292925",
+    ),
+    xaxis=dict(
+        title=None,
+        categoryorder="array",
+        categoryarray=["T+1", "T+7", "T+15", "T+30", "T+45"],
+        showgrid=False,
+        linecolor="#D9D7CE",
+        tickfont=dict(color="#62615B"),
+    ),
+    yaxis=dict(
+        title="Relative index",
+        range=[98, 124],
+        showgrid=True,
+        gridcolor="#D9D7CE",
+        gridwidth=1,
+        zeroline=False,
+        title_font=dict(color="#62615B"),
+        tickfont=dict(color="#62615B"),
+    ),
+    hoverlabel=dict(
+        bgcolor="#17382D",
+        font_color="#F7F5EF",
+    ),
+)
+
+st.plotly_chart(
+    fig,
     width="stretch",
+    config={"displayModeBar": False},
 )
 
 

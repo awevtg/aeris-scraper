@@ -473,7 +473,7 @@ with hero_right:
         <div class="hero-side">
             <div class="kpi-label">Current Airfare Index</div>
             <div class="kpi-value">{latest_index:.2f}</div>
-            <div class="kpi-change">{change_pct:+.2f}% since base period</div>
+            <div class="kpi-change">{change_pct:+.2f} % since base period</div>
             <div class="kpi-rule"></div>
             <div class="kpi-meta">
                 30-day observation window<br>

@@ -476,7 +476,93 @@ st.markdown(
     opacity: 1 !important;
 }
 
-    </style>
+    
+/* =========================================================
+   AERIS NAVIGATION SYSTEM — CONSISTENT ACROSS ALL PAGES
+   ========================================================= */
+
+.aeris-nav {
+    border-bottom: 1px solid #D9D7CE !important;
+    padding: 4px 0 16px 0 !important;
+    margin-bottom: 28px !important;
+}
+
+.aeris-nav .brand-name,
+.aeris-nav .brand-name *,
+.aeris-nav .brand-subtitle,
+.aeris-nav .brand-subtitle *,
+.aeris-nav .brand-sub {
+    font-family: "DM Sans", sans-serif !important;
+}
+
+.aeris-nav .brand-name {
+    color: #17382D !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    letter-spacing: 2px !important;
+}
+
+.aeris-nav .brand-subtitle,
+.aeris-nav .brand-sub {
+    color: #8A887F !important;
+    font-size: 8px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1.2px !important;
+}
+
+.aeris-nav .brand-mark {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: #17382D !important;
+    color: #F5F4EF !important;
+}
+
+.aeris-nav [data-testid="stPageLink"],
+.aeris-nav [data-testid="stPageLink"] a,
+.aeris-nav [data-testid="stPageLink"] a *,
+.aeris-nav [data-testid="stPageLink"] a p,
+.aeris-nav [data-testid="stPageLink"] a span,
+.aeris-nav [data-testid="stPageLink"] button,
+.aeris-nav [data-testid="stPageLink"] button *,
+.aeris-nav [data-testid="stPageLink"] button p,
+.aeris-nav [data-testid="stPageLink"] button span {
+    font-family: "DM Sans", sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    letter-spacing: .13em !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    color: #706F68 !important;
+    -webkit-text-fill-color: #706F68 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+}
+
+.aeris-nav [data-testid="stPageLink"] a:hover,
+.aeris-nav [data-testid="stPageLink"] a:hover *,
+.aeris-nav [data-testid="stPageLink"] button:hover,
+.aeris-nav [data-testid="stPageLink"] button:hover * {
+    color: #17382D !important;
+    -webkit-text-fill-color: #17382D !important;
+}
+
+.aeris-nav .nav-active,
+.aeris-nav .nav-active *,
+.aeris-nav .nav-current,
+.aeris-nav .nav-current * {
+    color: #A74628 !important;
+    -webkit-text-fill-color: #A74628 !important;
+    font-family: "DM Sans", sans-serif !important;
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    letter-spacing: .13em !important;
+    text-transform: uppercase !important;
+}
+
+</style>
     """,
     unsafe_allow_html=True,
 )
