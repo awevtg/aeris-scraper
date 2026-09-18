@@ -27,4 +27,4 @@ Weighted National Index
         ↓
 AERIS Airfare Price Index
         ↓
-Dashboard + Intelligence
+Dashboard + Intelligence 
